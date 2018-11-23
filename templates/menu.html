@@ -1,0 +1,100 @@
+<html>
+<h1>{{restaurant.name}}</h1>
+<br>
+<a href = {{url_for('newMenuItem',restaurant_id=restaurant.id)}}>Create new item</a>
+<br>
+<div class = 'flash'>
+    {% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<ul>
+{% for message in messages %}
+  <li> <strong> {{ message }} </strong> </li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+</div>
+<br>
+<br>
+
+<h2>Appetizers</h2>
+<br>
+
+{% for i in items%}
+{%if i.course=='Appetizer'%}
+{{i.name}}<br>
+{{i.description}}<br>
+{{i.price}}
+<br>
+<a href='{{url_for('editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Edit</a>
+<br>
+<a href='{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Delete</a>
+<br><br>
+{%endif}
+{%endfor%}
+<br>
+<br>
+
+<h2>Entrees</h2>
+<br>
+
+{% for i in items%}
+{%if i.course=='Entree'%}
+{{i.name}}<br>
+{{i.description}}<br>
+{{i.price}}
+<br>
+<a href='{{url_for('editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Edit</a>
+<br>
+<a href='{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Delete</a>
+<br><br>
+{%endif}
+{%endfor%}
+
+<br>
+<br>
+
+<h2>Desserts</h2>
+<br>
+
+{% for i in items%}
+{%if i.course=='Dessert'%}
+{{i.name}}
+<br>
+{{i.description}}<br>
+{{i.price}}
+<br>
+<a href='{{url_for('editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Edit</a>
+<br>
+<a href='{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Delete</a>
+<br><br>
+{%endif}
+{%endfor%}
+
+<br>
+<br>
+
+<h2>Beverages</h2>
+<br>
+
+{% for i in items%}
+{%if i.course=='Beverage'%}
+{{i.name}}<br>
+{{i.description}}<br>
+{{i.price}}
+<br>
+<a href='{{url_for('editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Edit</a>
+<br>
+<a href='{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}'>Delete</a>
+<br><br>
+{%endif}
+{%endfor%}
+
+
+
+
+
+
+</html>
